@@ -2,6 +2,10 @@ English | [中文](./README.zh-CN.md)
 
 ![](https://nocobase.oss-cn-beijing.aliyuncs.com/bbcedd403d31cd1ccc4e9709581f5c2f.png)  
 
+**Note:** 📌
+
+NocoBase is in early stage of development and is subject to frequent changes, please use caution in production environments.
+
 ## What is NocoBase
 
 NocoBase is a scalability-first, open-source no-code development platform. No programming required, build your own collaboration platform, management system with NocoBase in minutes.
@@ -25,8 +29,8 @@ NocoBase is designed for you if you have the following needs.
 
 - Develop an internal management system
 - Meet most of your business needs with no-code development
-- Meet particular needs with regular development
-- The system requires frequent changes
+- No-code development is simple enough for non-developers; flexible enough to be close to native development
+- Can be very easy to extend
 - Private deployment with full control of code and data
 - Free to use or pay for more technical support
 
