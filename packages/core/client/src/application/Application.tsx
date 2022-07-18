@@ -29,7 +29,6 @@ import { SchemaInitializerProvider } from '../schema-initializer';
 import { BlockTemplateDetails, BlockTemplatePage, SchemaTemplateShortcut } from '../schema-templates';
 import { SystemSettingsProvider, SystemSettingsShortcut } from '../system-settings';
 import { SigninPage, SignupPage } from '../user';
-import { WorkflowPage, WorkflowRouteProvider, WorkflowShortcut } from '../workflow';
 import { compose } from './compose';
 
 export interface ApplicationOptions {
@@ -66,7 +65,6 @@ export class Application {
         RouteSchemaComponent,
         SigninPage,
         SignupPage,
-        WorkflowPage,
         BlockTemplatePage,
         BlockTemplateDetails,
       },
@@ -77,7 +75,6 @@ export class Application {
         ACLShortcut,
         DesignableSwitch,
         CollectionManagerShortcut,
-        WorkflowShortcut,
         SystemSettingsShortcut,
         SchemaTemplateShortcut,
         FileStorageShortcut,
@@ -93,7 +90,7 @@ export class Application {
     this.use(AntdSchemaComponentProvider);
     this.use(ACLProvider);
     this.use(RemoteDocumentTitleProvider);
-    this.use(WorkflowRouteProvider);
+
     for (const plugin of options.plugins) {
       const [component, props] = Array.isArray(plugin) ? plugin : [plugin];
       this.use(component, props);

@@ -2,9 +2,30 @@ import moment from 'moment';
 
 export async function _(field, row, ctx, column?: any) {
   if (column?.dataIndex.length > 1) {
-    return column.dataIndex.reduce((result, col) => {
-      return result?.[col];
+    const result = column.dataIndex.reduce((result, col) => {
+      if (Array.isArray(result)) {
+        const subResults = [];
+        for (const r of result) {
+          subResults.push(r?.[col]);
+        }
+        return subResults;
+      } else {
+        if (Array.isArray(result?.[col])) {
+          const subResults = [];
+          for (const r of result?.[col]) {
+            subResults.push(r);
+          }
+          return subResults;
+        } else {
+          return result?.[col];
+        }
+      }
     }, row);
+    if (Array.isArray(result)) {
+      return result.join(',');
+    } else {
+      return result;
+    }
   } else {
     return row.get(field.name);
   }
@@ -89,7 +110,7 @@ export async function attachment(field, row, ctx) {
   return (row.get(field.name) || []).map((item) => item[field.url]).join(' ');
 }
 
-export async function chinaRegion(field, row, ctx) {
+export async function chinaRegion(field, row, ctx, column?: any) {
   const value = row.get(field.name);
   const values = (Array.isArray(value) ? value : [value]).sort((a, b) =>
     a.level !== b.level ? a.level - b.level : a.sort - b.sort,
